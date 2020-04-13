@@ -1,7 +1,8 @@
 import React from 'react';
 import { Grid, Button, Paper, ClickAwayListener, Icon, makeStyles } from '@material-ui/core';
-import Weeks from './Weeks';
+import Months from './Months';
 import Days from './Days';
+import ButtonControl from '../../common/ButtonControl';
 
 const useStyles = makeStyles((theme) => ({
     wrapper: {
@@ -15,14 +16,18 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 41
     },
     tagBorder: {
-        border: '1px solid blue'
+        border: '1px solid #0000ff3b'
     },
     paperCont: {
         height: '32vh'
+    },
+    addBtn: {
+        padding: '13px'
     }
 }));
 
-const CustomDatePicker = () => {
+const CustomDatePicker = ({ selectedDate }) => {
+    const { year, month, day, week } = selectedDate;
     const [open, setOpen] = React.useState(false);
     const handleTooltipClose = () => {
         setOpen(false);
@@ -48,16 +53,21 @@ const CustomDatePicker = () => {
                                 onClick={handleTooltipOpen}
                             />
                             {open ? (
-                                <Grid className={classes.tagBorder} container spacing={0}>
-                                    <Grid item xs={4}>
-                                        <Paper className={classes.paperCont}>
-                                            <Weeks />
-                                        </Paper>
+                                <Grid container className={classes.tagBorder} alignItems="flex-end" direction="column">
+                                    <Grid container spacing={0}>
+                                        <Grid item xs={4}>
+                                            <Paper className={classes.paperCont}>
+                                                <Months month={month} />
+                                            </Paper>
+                                        </Grid>
+                                        <Grid item xs={8}>
+                                            <Paper className={classes.paperCont}>
+                                                <Days day={day} />
+                                            </Paper>
+                                        </Grid>
                                     </Grid>
-                                    <Grid item xs={8}>
-                                        <Paper className={classes.paperCont}>
-                                            <Days />
-                                        </Paper>
+                                    <Grid className={classes.addBtn} justify="flex-end" alignItems="flex-end">
+                                        <ButtonControl color="primary" caption="Add" size="small" />
                                     </Grid>
                                 </Grid>
 

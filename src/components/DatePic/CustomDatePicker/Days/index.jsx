@@ -9,7 +9,8 @@ const useStyles = makeStyles(() => ({
         width: '40vw',
     },
     dayWeek: {
-        display: 'flex'
+        display: 'flex',
+        padding: '12px'
     }
 }));
 const Days = () => {
@@ -27,7 +28,7 @@ const Days = () => {
         <Grid direction="column" alignItems="flex-end" justify="flex-end" spacing={8} >
             <Grid className={classes.dayWeek} justify="flex-end" alignItems="flex-end">
                 <ButtonControl onClickHandle={handleSelect} color="primary" caption="Days" size="small" />
-                <ButtonControl onClickHandle={handleSelect} variant="outlined" color="secondary" caption="Weeks" size="small" />
+                <ButtonControl onClickHandle={handleSelect} variant="outlined" color="secondary" caption="Months" size="small" />
             </Grid>
             <Grid>
                 {isDaySelect ?
@@ -35,9 +36,6 @@ const Days = () => {
                     :
                     <NumberOfWeek />
                 }
-            </Grid>
-            <Grid className={classes.dayWeek} justify="flex-end" alignItems="flex-end">
-                <ButtonControl color="primary" caption="Add" size="small" />
             </Grid>
         </Grid>
     )

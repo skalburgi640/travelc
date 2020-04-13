@@ -7,7 +7,24 @@ import './style.css';
 import CustomDatePicker from './CustomDatePicker';
 
 class DatePic extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			selectedDate: {}
+		}
+	}
+	handleAdd = ({ year, month, day, week }) => {
+		this.setState({
+			selectedDate: {
+				year,
+				month,
+				day,
+				week
+			}
+		});
+	}
 	render() {
+		const { selectedDate } = this.state;
 		return (
 			<Container maxWidth="md" className="typrography-div">
 				<Grid container direction="row"
@@ -35,7 +52,7 @@ class DatePic extends Component {
 					</Grid>
 				</Grid>
 				<Grid justify="end" xs={12} alignItems="center">
-					<CustomDatePicker />
+					<CustomDatePicker onAdd={this.handleAdd} selectedDate={selectedDate} />
 				</Grid>
 			</Container >
 		);
