@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 
-const ButtonControl = ({ caption, onClickHandle, size, color, cName, variant }) => {
+const ButtonControl = ({ caption, onClickHandle, size, color, cName, variant, data }) => {
     return (
         <Button
             key={caption}
@@ -9,7 +9,7 @@ const ButtonControl = ({ caption, onClickHandle, size, color, cName, variant }) 
             variant={variant || "contained"}
             size={size}
             color={color}
-            onClick={() => onClickHandle(caption)}
+            onClick={() => onClickHandle(data)}
         >
             {caption}
         </Button>

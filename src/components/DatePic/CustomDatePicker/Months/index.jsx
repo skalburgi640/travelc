@@ -4,15 +4,15 @@ import ButtonControl from '../../../common/ButtonControl';
 import { MONTHS } from '../../../../util/constants';
 import './style.css';
 
-const Months = () => {
+const Months = ({ onDateChange }) => {
     const month = MONTHS;
-    const handleClick = (caption) => {
-        alert(caption)
+    const handleClick = (data) => {
+        onDateChange(data.id, "month")
     }
     return (
         <Grid justify="start" spacing={3} >
             {month.map((item) => (
-                <ButtonControl onClickHandle={handleClick} cName="btn-week" caption={item} size="small" />
+                <ButtonControl onClickHandle={handleClick} cName="btn-week" data={item} caption={item.month} size="small" />
             ))}
         </Grid>
     )

@@ -4,17 +4,7 @@ import Months from './Months';
 import Days from './Days';
 import ButtonControl from '../../common/ButtonControl';
 
-const useStyles = makeStyles((theme) => ({
-    wrapper: {
-        width: '22vw',
-        height: '100%',
-        backgroundColor: "#fff",
-        float: "left"
-    },
-    days: {
-        float: "left",
-        marginLeft: 41
-    },
+const useStyles = makeStyles(() => ({
     tagBorder: {
         border: '1px solid #0000ff3b'
     },
@@ -26,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const CustomDatePicker = ({ selectedDate }) => {
+const CustomDatePicker = ({ selectedDate, onDateChange }) => {
     const { year, month, day, week } = selectedDate;
     const [open, setOpen] = React.useState(false);
     const handleTooltipClose = () => {
@@ -57,12 +47,12 @@ const CustomDatePicker = ({ selectedDate }) => {
                                     <Grid container spacing={0}>
                                         <Grid item xs={4}>
                                             <Paper className={classes.paperCont}>
-                                                <Months month={month} />
+                                                <Months month={month} onDateChange={onDateChange} />
                                             </Paper>
                                         </Grid>
                                         <Grid item xs={8}>
                                             <Paper className={classes.paperCont}>
-                                                <Days day={day} />
+                                                <Days onDateChange={onDateChange} selectedDate={selectedDate} day={day} />
                                             </Paper>
                                         </Grid>
                                     </Grid>
@@ -76,7 +66,7 @@ const CustomDatePicker = ({ selectedDate }) => {
                     </div>
                 </ClickAwayListener>
             </Grid>
-        </div >
+        </div>
     );
 }
 

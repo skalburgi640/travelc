@@ -3,3 +3,8 @@
     height: 50vh;
     border: 1px solid rgba(0, 0, 255, 0.63); 
 }
+
+.years>.year-picker {
+    width: 200px;
+    height: 40px;
+}
